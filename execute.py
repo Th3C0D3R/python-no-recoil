@@ -9,15 +9,15 @@ import os, time, sys
 # vars
 rcson = False
 procfound = False
-rcsactive = False
+rapidFire = False
 rndopt = randint(0,1)
-lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*17
+lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*18
 nPid = 1
 searchname = "TlsGame" #PUBG = TlsGame
 error_code = [dontExecute.bcolors.ENDC,""]
 
 def loadConfig():
-	global toggleKey, exitKey, reloadKey,restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, configLoaded, slot1, slot2, slot3
+	global toggleKey, exitKey, reloadKey,restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, configLoaded, slot1, slot2, slot3
 	toggleKey = int(dontExecute.getConfig("Settings","default_toggle_key"))
 	exitKey = int(dontExecute.getConfig("Settings","default_exit_key"))
 	reloadKey = int(dontExecute.getConfig("Settings","default_reload_key"))
@@ -28,21 +28,23 @@ def loadConfig():
 	rightKey = int(dontExecute.getConfig("Settings","default_select_key_right"))
 	page_up = int(dontExecute.getConfig("Settings","default_select_key_second_up"))
 	page_down = int(dontExecute.getConfig("Settings","default_select_key_second_down"))
+	rapidFireKey = int(dontExecute.getConfig("Settings","default_rapidFireKey"))
 	slot1 = str(dontExecute.getConfig("Settings","slot1"))
 	slot2 = str(dontExecute.getConfig("Settings","slot2"))
 	slot3 = str(dontExecute.getConfig("Settings","slot3"))
 	
 def drawScreen():
 	os.system('cls' if os.name=='nt' else 'clear')
-	outStr  = "============No-Recoil-Script============\n"
+	outStr  = "============No-Recoil-Script V2============\n"
 	outStr += "\n"
 	outStr += "Process found: " + str(procfound)+"\n"
 	outStr += "Game selected: " + str(aPid == nPid)+"\n"
 	outStr += "Recoil-Script: " + (str(True) if rcson else str(False))+"\n"
-	outStr += "RCS Active   : " + (str(True) if rcsactive else str(False))+"\n"
+	outStr += "Rapidfire    : " + (str(True) if rapidFire else str(False))+"\n"
 	outStr += "\n"
 	outStr += "Keybinds:\n"
 	outStr += "Toggle Recoil-Script	: " + dontExecute.getKeyFromValue(toggleKey)+"\n"
+	outStr += "Toggle Rapidfire 	: " + dontExecute.getKeyFromValue(rapidFireKey)+"\n"
 	outStr += "Change Weapon 	   	: " + dontExecute.getKeyFromValue(leftKey)+" and "+ dontExecute.getKeyFromValue(rightKey)+"\n"
 	outStr += "for current Slot\n"
 	outStr += "Lower Recoil 	   	: " + dontExecute.getKeyFromValue(downKey)+"\n"
@@ -113,12 +115,16 @@ while True:
 					sleep(1)
 					os.system('cls')
 					exit()
+				if win32api.GetAsyncKeyState(rapidFireKey):
+					rapidFire = not rapidFire
 				while rcson is True:
 					count = 0
 					drawScreen()
 					while mouse.is_pressed(button='left'):
-						rcsactive = True
-						if count < 40:
+						if rapidFire:
+							mouse.release(button='left')
+							mouse.press(button="left")
+						if activeSlot != 0:
 							rndopt = randint(0,1)
 							if rndopt == 1:
 								randomized = randint(0,5)
@@ -136,12 +142,8 @@ while True:
 								ammount = ammount - randomized
 							ammountFinal = int(round(ammount))
 							win32api.mouse_event(0x0001,0,ammountFinal)
-							sleep(0.10)    
-						count = count + 1
-						if count > 40:
-							count = 0
-							ammount = 0  
-					rcsactive = False
+							count = count + 1
+						sleep(0.1) 
 					
 					if win32api.GetAsyncKeyState(toggleKey):
 						error_code = [dontExecute.bcolors.ENDC,""]
@@ -156,7 +158,10 @@ while True:
 						sleep(1)
 						os.system('cls')
 						exit()
-					
+						
+					if win32api.GetAsyncKeyState(rapidFireKey):
+						rapidFire = not rapidFire
+						
 					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('m')):
 						if lastKey == 'm':
 							rcson = True
