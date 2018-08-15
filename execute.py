@@ -13,11 +13,11 @@ rapidFire = False
 rndopt = randint(0,1)
 lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*18
 nPid = 1
-searchname = "TslGame" #PUBG = TlsGame
+processname = "TslGame" #PUBG = TlsGame
 error_code = [dontExecute.bcolors.ENDC,""]
 
 def loadConfig():
-	global toggleKey, exitKey, reloadKey,restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, configLoaded, slot1, slot2, slot3
+	global toggleKey, exitKey, reloadKey,restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down,processname, rapidFireKey, configLoaded, slot1, slot2, slot3
 	toggleKey = int(dontExecute.getConfig("Settings","default_toggle_key"))
 	exitKey = int(dontExecute.getConfig("Settings","default_exit_key"))
 	reloadKey = int(dontExecute.getConfig("Settings","default_reload_key"))
@@ -29,13 +29,14 @@ def loadConfig():
 	page_up = int(dontExecute.getConfig("Settings","default_select_key_second_up"))
 	page_down = int(dontExecute.getConfig("Settings","default_select_key_second_down"))
 	rapidFireKey = int(dontExecute.getConfig("Settings","default_rapidFireKey"))
+	processname = str(dontExecute.getConfig("Settings","default_processname"))
 	slot1 = str(dontExecute.getConfig("Settings","slot1"))
 	slot2 = str(dontExecute.getConfig("Settings","slot2"))
 	slot3 = str(dontExecute.getConfig("Settings","slot3"))
 	
 def drawScreen():
 	os.system('cls' if os.name=='nt' else 'clear')
-	outStr  = "============No-Recoil-Script V3============\n"
+	outStr  = "============No-Recoil-Script V2============\n"
 	outStr += "\n"
 	outStr += "Process found: " + str(procfound)+"\n"
 	outStr += "Game selected: " + str(aPid == nPid)+"\n"
@@ -95,13 +96,14 @@ else:
 	
 while True:
 	loadConfig()
+	
 	drawScreen()
 	if procfound:
-		if dontExecute.processExists(searchname) == False:
+		if dontExecute.processExists(processname) == False:
 			procfound = False
 		else:
 			aPid = int(dontExecute.activeWindow())
-			nPid = int(dontExecute.neededWindow(searchname))		
+			nPid = int(dontExecute.neededWindow(processname))		
 			if (aPid == nPid):
 				error_code = [dontExecute.bcolors.ENDC,""]
 				if win32api.GetAsyncKeyState(toggleKey):
@@ -162,25 +164,6 @@ while True:
 					if win32api.GetAsyncKeyState(rapidFireKey):
 						rapidFire = not rapidFire
 						
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('m')):
-						if lastKey == 'm':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "m"
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('esc')):
-						if lastKey == 'esc':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "esc"
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('tab')):
-						if lastKey == 'tab':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "tab"
-
 					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('1')) or win32api.GetAsyncKeyState(dontExecute.getValueFromKey('Numpad 1')):
 						activeSlot = 1
 					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('2')) or win32api.GetAsyncKeyState(dontExecute.getValueFromKey('Numpad 2')):
@@ -310,7 +293,7 @@ while True:
 			print('RCS RESTARTING IN 2sec')
 			sleep(2)
 			restart()
-		if dontExecute.processExists(searchname):
+		if dontExecute.processExists(processname):
 			error_code = [dontExecute.bcolors.ENDC,""]
 			procfound = True
 		sleep(0.1)

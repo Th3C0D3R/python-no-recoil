@@ -19,6 +19,7 @@ def writeConfig():
 	'default_select_key_second_up': int(0x21),
 	'default_select_key_second_down': int(0x22),
 	'default_rapidFireKey': int(0x23),
+	'default_processname':'TslGame',
 	'slot1' : 'akm',
 	'slot2' : 'm249',
 	'slot3' : 'p1911'
@@ -67,7 +68,7 @@ def checkConfig():
 				sectionHasOption("Settings",'default_reload_key') and sectionHasOption("Settings",'default_restart_key') and sectionHasOption("Settings",'default_select_key_up') and
 				sectionHasOption("Settings",'default_select_key_down') and sectionHasOption("Settings",'default_select_key_left') and sectionHasOption("Settings",'default_select_key_right') and
 				sectionHasOption("Settings",'slot1') and sectionHasOption("Settings",'slot2') and sectionHasOption("Settings",'slot3') and sectionHasOption("Settings",'default_select_key_second_up') and 
-				sectionHasOption("Settings",'default_rapidFireKey')):
+				sectionHasOption("Settings",'default_rapidFireKey') and sectionHasOption("Settings",'default_processname')):
 				str = "allright"
 		else:
 			return False
