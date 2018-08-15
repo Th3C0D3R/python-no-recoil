@@ -13,7 +13,7 @@ rcsactive = False
 rndopt = randint(0,1)
 lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*17
 nPid = 1
-searchname = "TlsGame" #PUBG = TlsGame
+searchname = "TslGame" #PUBG = TlsGame
 error_code = [dontExecute.bcolors.ENDC,""]
 
 def loadConfig():
