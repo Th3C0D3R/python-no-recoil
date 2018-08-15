@@ -35,7 +35,7 @@ def loadConfig():
 	
 def drawScreen():
 	os.system('cls' if os.name=='nt' else 'clear')
-	outStr  = "============No-Recoil-Script V2============\n"
+	outStr  = "============No-Recoil-Script V3============\n"
 	outStr += "\n"
 	outStr += "Process found: " + str(procfound)+"\n"
 	outStr += "Game selected: " + str(aPid == nPid)+"\n"
