@@ -11,7 +11,7 @@ rcson = False
 procfound = False
 rapidFire = False
 rndopt = randint(0,1)
-lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*18
+toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*17
 nPid = 1
 processname = "TslGame" #PUBG = TlsGame
 error_code = [dontExecute.bcolors.ENDC,""]
