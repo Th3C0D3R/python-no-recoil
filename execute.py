@@ -11,7 +11,7 @@ rcson = False
 procfound = False
 rcsactive = False
 rndopt = randint(0,1)
-lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*17
+toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*16
 nPid = 1
 searchname = "TslGame" #PUBG = TlsGame
 error_code = [dontExecute.bcolors.ENDC,""]
@@ -156,25 +156,6 @@ while True:
 						sleep(1)
 						os.system('cls')
 						exit()
-					
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('m')):
-						if lastKey == 'm':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "m"
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('esc')):
-						if lastKey == 'esc':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "esc"
-					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('tab')):
-						if lastKey == 'tab':
-							rcson = True
-						else:
-							rcson = False
-						lastKey  = "tab"
 
 					if win32api.GetAsyncKeyState(dontExecute.getValueFromKey('1')) or win32api.GetAsyncKeyState(dontExecute.getValueFromKey('Numpad 1')):
 						activeSlot = 1
