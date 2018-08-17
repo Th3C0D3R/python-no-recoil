@@ -154,7 +154,7 @@ def get_window_pid(title):
 	
 def getKeyFromValue(searchvalue):
 	for key, value in VK_CODE.items():
-		if str(value) == str(searchvalue):
+		if str(value) == str(int(searchvalue)):
 			return str(key)
 
 def getValueFromKey(searchKey):

@@ -6,15 +6,17 @@ from random import randint
 import dontExecute
 import os, time, sys
 from threading import Timer
+import ctypes
 
 # vars
+version = "2.3"
 rcson = False
 procfound = False
 rapidFire = False
 rndopt = randint(0,1)
 lastKey, toggleKey, exitKey, reloadKey, restartKey, upKey, downKey, leftKey, rightKey, page_up, page_down, rapidFireKey, activeSlot, slot1, slot2, slot3, aPid, count = (0,)*18
 nPid = 1
-processname = "notepad++" #PUBG = TslGame
+processname = "TslGame" #PUBG = TslGame
 error_code = [dontExecute.bcolors.ENDC,""]
 somethingChanged = False
 gameSelected = False
@@ -42,17 +44,17 @@ def drawScreen():
 	global somethingChanged
 	if somethingChanged:
 		os.system('cls' if os.name=='nt' else 'clear')
-		outStr  = "========================= "+ dontExecute.bcolors.HEADER +" No-Recoil-Script V2.2 "+ dontExecute.bcolors.ENDC +" =========================\n"
+		outStr  = "========================= "+ dontExecute.bcolors.HEADER +" No-Recoil-Script V"+version+" "+ dontExecute.bcolors.ENDC +" =========================\n"
 		outStr += "\n"
 		outStr += dontExecute.bcolors.YELLOW + "Status:"+ dontExecute.bcolors.ENDC+"\n"
-		outStr += "Process found: " + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if procfound else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+   "       Recoil-Script: " + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rcson else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
-		outStr += "Game selected: " + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if aPid==nPid else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"       Rapidfire    : " + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rapidFire else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
+		outStr += "Process found: " + "{:<15}".format(((dontExecute.bcolors.BLUE + str(True)) if procfound else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"{:<15}".format("Recoil-Script: ") + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rcson else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
+		outStr += "Game selected: " + "{:<15}".format(((dontExecute.bcolors.BLUE + str(True)) if aPid==nPid else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"{:<15}".format("Rapidfire: ") + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rapidFire else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
 		outStr += "\n"
 		outStr += "\n"
 		outStr += dontExecute.bcolors.YELLOW + "Weapon Selection:" + dontExecute.bcolors.ENDC+"\n"
 		outStr += (dontExecute.bcolors.GREEN if activeSlot==1 else dontExecute.bcolors.ENDC ) + "Weapon Slot 1:    	" + "{:<8}".format(slot1) + dontExecute.bcolors.ENDC + (dontExecute.bcolors.GREEN if activeSlot==2 else dontExecute.bcolors.ENDC ) + "       Weapon Slot 2:    	" + slot2 + dontExecute.bcolors.ENDC+"\n"
-		outStr += (dontExecute.bcolors.GREEN if activeSlot==1 else dontExecute.bcolors.ENDC ) + "Recoil-Value:		" + str(dontExecute.getRecoilValues(slot1)[0])+ dontExecute.bcolors.ENDC + (dontExecute.bcolors.GREEN if activeSlot==2 else dontExecute.bcolors.ENDC ) +"             Recoil-Value:     	" + str(dontExecute.getRecoilValues(slot2)[0]) + dontExecute.bcolors.ENDC+"\n"
-		outStr += (dontExecute.bcolors.GREEN if activeSlot==1 else dontExecute.bcolors.ENDC ) + "Recoil-Value Second:	" + str(dontExecute.getRecoilValues(slot1)[1])+ dontExecute.bcolors.ENDC + (dontExecute.bcolors.GREEN if activeSlot==2 else dontExecute.bcolors.ENDC ) +"             Recoil-Value Second:	" + str(dontExecute.getRecoilValues(slot2)[1]) + dontExecute.bcolors.ENDC+"\n"
+		outStr += (dontExecute.bcolors.GREEN if activeSlot==1 else dontExecute.bcolors.ENDC ) + "Recoil-Value:		" + "{:<3}".format(str(dontExecute.getRecoilValues(slot1)[0]))+ dontExecute.bcolors.ENDC + (dontExecute.bcolors.GREEN if activeSlot==2 else dontExecute.bcolors.ENDC ) +"            Recoil-Value:     	" + "{:<3}".format(str(dontExecute.getRecoilValues(slot2)[0])) + dontExecute.bcolors.ENDC+"\n"
+		outStr += (dontExecute.bcolors.GREEN if activeSlot==1 else dontExecute.bcolors.ENDC ) + "Recoil-Value Second:	" + "{:<3}".format(str(dontExecute.getRecoilValues(slot1)[1]))+ dontExecute.bcolors.ENDC + (dontExecute.bcolors.GREEN if activeSlot==2 else dontExecute.bcolors.ENDC ) +"            Recoil-Value Second:	" + "{:<3}".format(str(dontExecute.getRecoilValues(slot2)[1])) + dontExecute.bcolors.ENDC+"\n"
 		outStr += "\n"
 		outStr += "\n"
 		outStr += dontExecute.bcolors.YELLOW + "Keybinds:" + dontExecute.bcolors.ENDC+"\n"
@@ -92,7 +94,9 @@ else:
 		exit()
 
 loadConfig()
-	
+os.system('mode con: cols=81 lines=31')
+ctypes.windll.kernel32.SetConsoleTitleW("No Recoil Script V"+version+ "     Made by SiedlerLP")
+
 while True:
 	drawScreen()
 	
@@ -278,12 +282,13 @@ while True:
 						restart()
 					sleep(0.1)
 			else:
-				gameSelected = False
-				rapidFire = False
-				rcson = False
-				aPid = 0
-				nPid = 1
-				somethingChanged = True
+				if gameSelected == True or rapidFire == True or rcson == True:
+					gameSelected = False
+					rapidFire = False
+					rcson = False
+					aPid = 0
+					nPid = 1
+					somethingChanged = True
 				if win32api.GetAsyncKeyState(toggleKey):
 					error_code = [dontExecute.bcolors.ENDC,""]
 					error_code = [dontExecute.bcolors.RED,"ERROR: Target Window is not selected"]
