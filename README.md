@@ -1,4 +1,7 @@
 # My Python No-Recoil Script
+
+BRANCH V2.4 is the new UPDATE
+
 More to see here:
 https://www.unknowncheats.me/forum/pubg-releases/295160-python-vertical-recoil-script-extended.html
 
