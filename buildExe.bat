@@ -1,5 +1,7 @@
 @echo off
 echo .....
+echo check if pyinstaller is installed:
+python -m pip install configparser
 echo removing old stuff, build and dist folder
 rmdir /s /q dist
 rmdir /s /q build

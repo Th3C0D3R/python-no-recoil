@@ -3,13 +3,16 @@ from time import sleep
 from random import randint
 from multiprocessing.connection import Client
 from subprocess import call
+import colorama
+
+colorama.init()
 
 #TO-DO:
 #[✓] Toggle Overlay 
 #[ ] Add Tabfire
 #[ ] (Add DBZ (move while looting)) not sure if
 #[ ] Add Menu/Map/Inventory
-#[ ] Move Recoil/Weapon/Slot Switching out of "rcson = true" condition
+#[✓] Move Recoil/Weapon/Slot Switching out of "rcson = true" condition
 
 version = "2.4"
 rcson, procfound, gameSelected, rapidFire,holdBreath = (False,)*5
@@ -46,15 +49,15 @@ def loadConfig():
 	
 def drawScreen():
 	os.system('cls' if os.name=='nt' else 'clear')
-	outStr  = "========================= "+ dontExecute.bcolors.HEADER +" No-Recoil-Script V"+version+" "+ dontExecute.bcolors.ENDC +" =========================\n"
+	outStr  = "========================= "+ colorama.Fore.GREEN +" No-Recoil-Script V"+version+" "+ colorama.Style.RESET_ALL +" =========================\n"
 	outStr += "\n"
-	outStr += dontExecute.bcolors.YELLOW + "Status:"+ dontExecute.bcolors.ENDC+"\n"
-	outStr += "Process found: " + "{:<15}".format(((dontExecute.bcolors.BLUE + str(True)) if procfound else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"{:<15}".format("Recoil-Script: ") + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rcson else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
-	outStr += "Game selected: " + "{:<15}".format(((dontExecute.bcolors.BLUE + str(True)) if aPid==nPid else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"{:<15}".format("Rapidfire: ") + "{:<5}".format(((dontExecute.bcolors.BLUE + str(True)) if rapidFire else (dontExecute.bcolors.RED + str(False)))) + dontExecute.bcolors.ENDC+"\n"
-	outStr += "Overlay      : " + "{:<15}".format(((dontExecute.bcolors.BLUE + str(True)) if toggleOverlayBool else (dontExecute.bcolors.RED + str(False))))
+	outStr += colorama.Fore.YELLOW + "Status:"+ colorama.Style.RESET_ALL+"\n"
+	outStr += "Process found: " + "{:<15}".format(((colorama.Fore.BLUE + str(True)) if procfound else (colorama.Fore.RED + str(False)))) + colorama.Style.RESET_ALL+"{:<15}".format("Recoil-Script: ") + "{:<5}".format(((colorama.Fore.BLUE + str(True)) if rcson else (colorama.Fore.RED + str(False)))) + colorama.Style.RESET_ALL+"\n"
+	outStr += "Game selected: " + "{:<15}".format(((colorama.Fore.BLUE + str(True)) if aPid==nPid else (colorama.Fore.RED + str(False)))) + colorama.Style.RESET_ALL+"{:<15}".format("Rapidfire: ") + "{:<5}".format(((colorama.Fore.BLUE + str(True)) if rapidFire else (colorama.Fore.RED + str(False)))) + colorama.Style.RESET_ALL+"\n"
+	outStr += "Overlay      : " + "{:<15}".format(((colorama.Fore.BLUE + str(True)) if toggleOverlayBool else (colorama.Fore.RED + str(False))))
 	outStr += "\n"
 	outStr += "\n"
-	outStr += dontExecute.bcolors.YELLOW + "Keybinds:" + dontExecute.bcolors.ENDC+"\n"
+	outStr += colorama.Fore.YELLOW + "Keybinds:" + colorama.Style.RESET_ALL+"\n"
 	outStr += "Toggle Recoil-Script	: " + dontExecute.getKeyFromValue(toggleKey)+"\n"
 	outStr += "Toggle Rapidfire 	: " + dontExecute.getKeyFromValue(rapidFireKey)+"\n"
 	outStr += "Toggle Overlay		: " + dontExecute.getKeyFromValue(toggleOverlay)+"\n"
@@ -68,7 +71,7 @@ def drawScreen():
 	outStr += "\n"
 	outStr += "Config File Path: " + os.path.realpath('config.cfg') + "\n"
 	outStr += "\n"
-	outStr += "=========================== "+ dontExecute.bcolors.HEADER +" Made by SiedlerLP "+ dontExecute.bcolors.ENDC +" ===========================\n"
+	outStr += "=========================== "+ colorama.Fore.GREEN +" Made by SiedlerLP "+ colorama.Style.RESET_ALL +" ===========================\n"
 	print(outStr)
 		
 def senddata():
@@ -359,7 +362,7 @@ while True:
 		getKeyPress()
 		
 		if dontExecute.processExists(processname):
-			error_code = [dontExecute.bcolors.ENDC,""]
+			error_code = [colorama.Style.RESET_ALL,""]
 			procfound = True
 			needSendData = True
 			senddata()

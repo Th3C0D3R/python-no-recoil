@@ -1,7 +1,8 @@
-import win32api, win32con, win32gui, win32ui, os, dontExecute, time, threading
+import win32api, win32con, win32gui, win32ui, os, dontExecute, time, threading,ctypes
 from multiprocessing.connection import Listener
 from time import sleep
 
+version = "2.4"
 activeSlot, hWindow, slot1, slot2, recoil11 = (0,)*5
 recoil12,recoil21,recoil22 = (0,)*3
 gameselected, processfound, rcsactive, rapidFire = (False,)*4
@@ -86,7 +87,7 @@ def Destroy(hwnd,message,wParam,lParam):
 	PostQuitMessage(0)
 		
 def KeyPressed(hWnd,message,wParam,lParam):
-	print(wParam)
+	print(message,wParam,lParam)
 		
 def main():
 	global hWindow
@@ -118,6 +119,9 @@ def main():
 	t1 = threading.Thread(target=mother,args=(('',1337),))
 	t1.setDaemon(True)
 	t1.start()
+	print("YOU CAN MINIMIZE THIS WINDOW NOW!")
+	print("IF YOU WANT TO CLOSE THE SERVER, CLOSE THIS WINDOW!")
+	ctypes.windll.kernel32.SetConsoleTitleW("No Recoil Script V"+version+ " Server     Made by SiedlerLP")
 	while True:
 		b,msg = win32gui.GetMessage(hWindow,0,0)
 		if msg == 0:
