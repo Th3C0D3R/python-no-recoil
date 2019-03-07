@@ -19,34 +19,31 @@ def writeConfig():
 	'default_select_key_second_up': int(0x21),
 	'default_select_key_second_down': int(0x22),
 	'default_rapidFireKey': int(0x23),
+	'default_toggle_overlay_key': int(0x60),
 	'default_processname':'TslGame',
 	'slot1' : 'akm',
-	'slot2' : 'm249',
-	'slot3' : 'p1911'
+	'slot2' : 'm249'
 	}
 	
 	config['Weapons'] = {
-	'AKM' : '13,14',
-	'AUG_A3' : '13,14',
-	'DP-28' : '13,14',
-	'GROZA' : '13,14',
-	'M16' : '13,14',
-	'ScarL' : '13,14',
-	'M249' : '13,14',
-	'M4' : '13,14',
-	'Mini14' : '13,14',
-	'MK14' : '13,14',
-	'Glock' : '13,14',
-	'P1911' : '13,14',
-	'P92' : '13,14',
-	'QBZ95' : '13,14',
-	'SKS' : '13,14',
-	'SLR' : '13,14',
-	'UMP' : '13,14',
-	'Vector' : '13,14',
-	'UZI' : '13,14',
-	'TommyGun' : '13,14',
-	'VSS' : '13,14'
+	'AKM' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'AUG_A3' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'DP-28' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'GROZA' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'M16' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'ScarL' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'M249' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'M4' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'Mini14' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'MK14' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'QBZ95' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'SKS' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'SLR' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'UMP' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'Vector' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'UZI' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'TommyGun' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13',
+	'VSS' : '13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,13'
 	}
 	
 	with open('config.cfg','w') as configfile:
@@ -54,21 +51,21 @@ def writeConfig():
 		return True
 		
 def getRecoilValues(option):
-	config = configparser.ConfigParser()
-	config.read("config.cfg")
 	rcsValues = getConfig("Weapons",option)
 	return rcsValues.split(',')
 	
 def checkConfig():
 	config = configparser.ConfigParser()
-	config.read("config.cfg")
+	fp = open("config.cfg")
+	config.readfp(fp)
+	fp.close()
 	if sectionExists("Settings"):
 		if (
 				sectionHasOption("Settings",'default_toggle_key') and sectionHasOption("Settings",'default_exit_key') and sectionHasOption("Settings",'default_select_key_second_down') and 
 				sectionHasOption("Settings",'default_reload_key') and sectionHasOption("Settings",'default_restart_key') and sectionHasOption("Settings",'default_select_key_up') and
 				sectionHasOption("Settings",'default_select_key_down') and sectionHasOption("Settings",'default_select_key_left') and sectionHasOption("Settings",'default_select_key_right') and
-				sectionHasOption("Settings",'slot1') and sectionHasOption("Settings",'slot2') and sectionHasOption("Settings",'slot3') and sectionHasOption("Settings",'default_select_key_second_up') and 
-				sectionHasOption("Settings",'default_rapidFireKey') and sectionHasOption("Settings",'default_processname')):
+				sectionHasOption("Settings",'slot1') and sectionHasOption("Settings",'slot2') and sectionHasOption("Settings",'default_select_key_second_up') and 
+				sectionHasOption("Settings",'default_rapidFireKey') and sectionHasOption("Settings",'default_processname') and sectionHasOption("Settings",'default_toggle_overlay_key')):
 				str = "allright"
 		else:
 			return False
@@ -79,7 +76,6 @@ def checkConfig():
 		if(
 			sectionHasOption("Weapons",'akm') and sectionHasOption("Weapons",'aug_a3') and sectionHasOption("Weapons",'dp-28') and sectionHasOption("Weapons",'groza') and 
 			sectionHasOption("Weapons",'m16') and sectionHasOption("Weapons",'m249') and sectionHasOption("Weapons",'m4') and sectionHasOption("Weapons",'mini14') and 
-			sectionHasOption("Weapons",'mk14') and sectionHasOption("Weapons",'glock') and sectionHasOption("Weapons",'p1911') and sectionHasOption("Weapons",'p92') and 
 			sectionHasOption("Weapons",'qbz95') and sectionHasOption("Weapons",'sks') and sectionHasOption("Weapons",'slr') and sectionHasOption("Weapons",'ump') and 
 			sectionHasOption("Weapons",'vector') and sectionHasOption("Weapons",'scarl') and sectionHasOption("Weapons",'uzi') and sectionHasOption("Weapons",'tommygun') and sectionHasOption("Weapons",'vss')):
 			return True
@@ -91,19 +87,25 @@ def checkConfig():
 		
 def getConfig(section, item):
 	config = configparser.ConfigParser()
-	config.read("config.cfg")
+	fp = open("config.cfg")
+	config.readfp(fp)
+	fp.close()
 	return (config[section][item])
 
 def saveConfig(section, item, value):
 	config = configparser.ConfigParser()
-	config.read("config.cfg")
+	fp = open("config.cfg")
+	config.readfp(fp)
+	fp.close()
 	config.set(section, item, value)
 	with open('config.cfg','w+') as configfile:
 		config.write(configfile)
 
 def sectionHasOption(section,option):
 	config = configparser.ConfigParser()
-	config.read("config.cfg")
+	fp = open("config.cfg")
+	config.readfp(fp)
+	fp.close()
 	if config.has_option(section,option): 
 		return True
 	else: 
@@ -111,7 +113,9 @@ def sectionHasOption(section,option):
 		
 def sectionExists(section):
 	config = configparser.ConfigParser()
-	config.read("config.cfg")
+	fp = open("config.cfg")
+	config.readfp(fp)
+	fp.close()
 	if config.has_section(section): 
 		return True
 	else: 
